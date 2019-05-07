@@ -13697,44 +13697,6 @@ Users most tweeting
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[154]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-154-315e627e7158&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> bs4 <span class="ansi-green-fg">import</span> BeautifulSoup
-<span class="ansi-green-intense-fg ansi-bold">      2</span> example1 <span class="ansi-blue-fg">=</span> BeautifulSoup<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">.</span>text<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">279</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;lxml&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-green-fg">print</span> example1<span class="ansi-blue-fg">.</span>get_text<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">ImportError</span>: No module named bs4</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13854,7 +13816,7 @@ https://t.co/mN07mOpaFh
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[188]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">example1</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">spot_day</span><span class="o">.</span><span class="n">body</span><span class="p">[</span><span class="mi">145875</span><span class="p">],</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
@@ -13862,37 +13824,6 @@ https://t.co/mN07mOpaFh
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FeatureNotFound</span>                           Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-188-352e5b9af490&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>example1 <span class="ansi-blue-fg">=</span> BeautifulSoup<span class="ansi-blue-fg">(</span>spot_day<span class="ansi-blue-fg">.</span>body<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">145875</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;lxml&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">print</span> example1<span class="ansi-blue-fg">.</span>get_text<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python2.7/dist-packages/bs4/__init__.pyc</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, markup, features, builder, parse_only, from_encoding, exclude_encodings, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    194</span>                     <span class="ansi-blue-fg">&#34;Couldn&#39;t find a tree builder with the features you &#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">    195</span>                     <span class="ansi-blue-fg">&#34;requested: %s. Do you need to install a parser library?&#34;</span>
-<span class="ansi-green-fg">--&gt; 196</span><span class="ansi-red-fg">                     % &#34;,&#34;.join(features))
-</span><span class="ansi-green-intense-fg ansi-bold">    197</span>             builder <span class="ansi-blue-fg">=</span> builder_class<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    198</span>             if not (original_features == builder.NAME or
-
-<span class="ansi-red-fg">FeatureNotFound</span>: Couldn&#39;t find a tree builder with the features you requested: lxml. Do you need to install a parser library?</pre>
-</div>
-</div>
-
 </div>
 </div>
 

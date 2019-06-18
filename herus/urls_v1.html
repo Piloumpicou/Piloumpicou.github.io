@@ -13121,6 +13121,38 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span> 
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/home/furrer/src&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">helpers</span> <span class="kn">as</span> <span class="nn">hp</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">iplot</span>
+<span class="kn">import</span> <span class="nn">cufflinks</span>
+<span class="n">cufflinks</span><span class="o">.</span><span class="n">go_offline</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13131,7 +13163,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">time</span>
@@ -13162,8 +13194,8 @@ print &quot;{} rows selected&quot;.format(df_monsanto.shape[0])
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>&gt;&gt;&gt; Query database data20171
 45864 rows selected
-CPU times: user 440 ms, sys: 200 ms, total: 640 ms
-Wall time: 39.4 s
+CPU times: user 520 ms, sys: 68 ms, total: 588 ms
+Wall time: 51.2 s
 </pre>
 </div>
 </div>
@@ -13174,7 +13206,7 @@ Wall time: 39.4 s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[456]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">sample_monsanto</span> <span class="o">=</span> <span class="n">df_monsanto</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13196,7 +13228,7 @@ Wall time: 39.4 s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[475]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">urlparse</span> <span class="kn">import</span> <span class="n">urlparse</span>
@@ -13237,7 +13269,7 @@ Wall time: 39.4 s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[475]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13259,7 +13291,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">all_doc_urls</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of references by domain name&#39;</span><span class="p">)</span>
@@ -13283,16 +13315,16 @@ dtype: int64</pre>
 <div>
         
         
-            <div id="77890043-2df4-4f82-ac6c-f490f973caa7" class="plotly-graph-div"></div>
+            <div id="4e55c50d-9a7a-490b-a2cc-cce81ca5f262" class="plotly-graph-div"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     window.PLOTLYENV.BASE_URL='https://plot.ly';
                     
-                if (document.getElementById("77890043-2df4-4f82-ac6c-f490f973caa7")) {
+                if (document.getElementById("4e55c50d-9a7a-490b-a2cc-cce81ca5f262")) {
                     Plotly.newPlot(
-                        '77890043-2df4-4f82-ac6c-f490f973caa7',
-                        [{"marker": {"color": "rgba(255, 153, 51, 0.6)", "line": {"color": "rgba(255, 153, 51, 1.0)", "width": 1}}, "name": "None", "orientation": "v", "text": "", "type": "bar", "uid": "3a4e551e-9053-48e6-aee1-58a46c934bad", "x": ["foodbabe.com", "tacticalinvestor.com", "www.topmastersinhealthcare.com", "www.naturalnews.com", "flipboard.com", "www.fooddemocracynow.org", "gmwatch.org", "www.huffingtonpost.com", "salsa3.salsalabs.com", "www.seattleorganicrestaurants.com", "archive.is", "www.globalresearch.ca", "www.ecowatch.com", "seattleorganicrestaurants.com", "bit.ly", "www.rt.com", "tweetedtimes.com", "articles.mercola.com", "coconutheadsurvivalguide.com", "www.nytimes.com"], "y": [1752, 1736, 1241, 780, 685, 574, 514, 459, 429, 372, 370, 325, 318, 269, 267, 256, 230, 224, 217, 204]}],
+                        '4e55c50d-9a7a-490b-a2cc-cce81ca5f262',
+                        [{"marker": {"color": "rgba(255, 153, 51, 0.6)", "line": {"color": "rgba(255, 153, 51, 1.0)", "width": 1}}, "name": "None", "orientation": "v", "text": "", "type": "bar", "uid": "62e509a8-f3cf-4034-9812-73ebe26e2f32", "x": ["foodbabe.com", "tacticalinvestor.com", "www.topmastersinhealthcare.com", "www.naturalnews.com", "flipboard.com", "www.fooddemocracynow.org", "gmwatch.org", "www.huffingtonpost.com", "salsa3.salsalabs.com", "www.seattleorganicrestaurants.com", "archive.is", "www.globalresearch.ca", "www.ecowatch.com", "seattleorganicrestaurants.com", "bit.ly", "www.rt.com", "tweetedtimes.com", "articles.mercola.com", "coconutheadsurvivalguide.com", "www.nytimes.com"], "y": [1752, 1736, 1241, 780, 685, 574, 514, 459, 429, 372, 370, 325, 318, 269, 267, 256, 230, 224, 217, 204]}],
                         {"legend": {"bgcolor": "#F5F6F9", "font": {"color": "#4D5663"}}, "paper_bgcolor": "#F5F6F9", "plot_bgcolor": "#F5F6F9", "title": {"font": {"color": "#4D5663"}, "text": "Number of references by domain name"}, "xaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}, "yaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}},
                         {"responsive": true, "plotlyServerURL": "https://plot.ly", "linkText": "Export to plot.ly", "showLink": true}
                     )
@@ -13320,7 +13352,7 @@ That means we want to only count the domain once when a user mentions it several
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[478]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Now we simply keep the author_id in the index so that we can drop duplicated (author-url) pairs.</span>
@@ -13355,7 +13387,7 @@ That means we want to only count the domain once when a user mentions it several
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>1222 distinct urls (domain) over
-4038 urls mentions, in
+4038 urls mentions/user, in
 18076 tweets containing 1+ doc_url, over
 45864 tweets
 </pre>
@@ -13364,7 +13396,7 @@ That means we want to only count the domain once when a user mentions it several
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[478]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13377,9 +13409,9 @@ www.naturalnews.com         120
 dld.bz                       88
 www.ecowatch.com             69
 www.huffingtonpost.com       56
-articles.mercola.com         53
-www.globalresearch.ca        53
 www.organicconsumers.org     53
+www.globalresearch.ca        53
+articles.mercola.com         53
 dtype: int64</pre>
 </div>
 
@@ -13391,7 +13423,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[479]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">all_doc_urls_once</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> 
@@ -13416,16 +13448,16 @@ dtype: int64</pre>
 <div>
         
         
-            <div id="99c0ab5a-37a6-49c0-a9be-99eae10056b8" class="plotly-graph-div"></div>
+            <div id="1d46974a-f8f4-45d7-98a5-b7456186b2ec" class="plotly-graph-div"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     window.PLOTLYENV.BASE_URL='https://plot.ly';
                     
-                if (document.getElementById("99c0ab5a-37a6-49c0-a9be-99eae10056b8")) {
+                if (document.getElementById("1d46974a-f8f4-45d7-98a5-b7456186b2ec")) {
                     Plotly.newPlot(
-                        '99c0ab5a-37a6-49c0-a9be-99eae10056b8',
-                        [{"marker": {"color": "rgba(255, 153, 51, 0.6)", "line": {"color": "rgba(255, 153, 51, 1.0)", "width": 1}}, "name": "None", "orientation": "v", "text": "", "type": "bar", "uid": "934b5423-9779-47b1-8596-e06e588bf293", "x": ["salsa3.salsalabs.com", "www.fooddemocracynow.org", "gmwatch.org", "www.naturalnews.com", "dld.bz", "www.ecowatch.com", "www.huffingtonpost.com", "articles.mercola.com", "www.globalresearch.ca", "www.organicconsumers.org", "www.gmwatch.org", "bit.ly", "linkis.com", "sustainablepulse.com", "www.seattleorganicrestaurants.com", "www.march-against-monsanto.com", "www.reuters.com", "www.buycott.com", "www.naturalblaze.com", "gmoinside.org"], "y": [295, 188, 166, 120, 88, 69, 56, 53, 53, 53, 47, 40, 39, 38, 33, 32, 29, 29, 27, 27]}],
+                        '1d46974a-f8f4-45d7-98a5-b7456186b2ec',
+                        [{"marker": {"color": "rgba(255, 153, 51, 0.6)", "line": {"color": "rgba(255, 153, 51, 1.0)", "width": 1}}, "name": "None", "orientation": "v", "text": "", "type": "bar", "uid": "03e08221-136e-4365-8473-5f8b987f6366", "x": ["salsa3.salsalabs.com", "www.fooddemocracynow.org", "gmwatch.org", "www.naturalnews.com", "dld.bz", "www.ecowatch.com", "www.huffingtonpost.com", "www.organicconsumers.org", "www.globalresearch.ca", "articles.mercola.com", "www.gmwatch.org", "bit.ly", "linkis.com", "sustainablepulse.com", "www.seattleorganicrestaurants.com", "www.march-against-monsanto.com", "www.reuters.com", "www.buycott.com", "gmoinside.org", "www.naturalblaze.com"], "y": [295, 188, 166, 120, 88, 69, 56, 53, 53, 53, 47, 40, 39, 38, 33, 32, 29, 29, 27, 27]}],
                         {"legend": {"bgcolor": "#F5F6F9", "font": {"color": "#4D5663"}}, "paper_bgcolor": "#F5F6F9", "plot_bgcolor": "#F5F6F9", "title": {"font": {"color": "#4D5663"}, "text": "Number of references by domain name - Normalized"}, "xaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}, "yaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}},
                         {"responsive": true, "plotlyServerURL": "https://plot.ly", "linkText": "Export to plot.ly", "showLink": true}
                     )

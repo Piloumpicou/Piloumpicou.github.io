@@ -13163,7 +13163,7 @@ $( document ).ready(code_toggle);
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span> 
@@ -13171,6 +13171,8 @@ $( document ).ready(code_toggle);
 <span class="kn">import</span> <span class="nn">helpers</span> <span class="kn">as</span> <span class="nn">hp</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="kn">as</span> <span class="nn">go</span>
@@ -13214,43 +13216,18 @@ $( document ).ready(code_toggle);
 
 </div>
 
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-        <script type="text/javascript">
-        window.PlotlyConfig = {MathJaxConfig: 'local'};
-        if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-        if (typeof require !== 'undefined') {
-        require.undef("plotly");
-        requirejs.config({
-            paths: {
-                'plotly': ['https://cdn.plot.ly/plotly-latest.min']
-            }
-        });
-        require(['plotly'], function(Plotly) {
-            window._Plotly = Plotly;
-        });
-        }
-        </script>
-        
-</div>
-
-</div>
-
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="o">%</span><span class="k">load_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
 </pre></div>
 
@@ -13263,7 +13240,7 @@ $( document ).ready(code_toggle);
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Retweets-Analysis">Retweets Analysis<a class="anchor-link" href="#Retweets-Analysis">&#182;</a></h1><hr>
-<h3 id="1.-Building-the-network"><a href="#1.-User-selection">1. Building the network</a><a class="anchor-link" href="#1.-Building-the-network">&#182;</a></h3><h3 id="2.-Analysis"><a href="#2.-User-status-harvesting">2. Analysis</a><a class="anchor-link" href="#2.-Analysis">&#182;</a></h3><hr>
+<h3 id="1.-Building-the-network"><a href="#1.-User-selection">1. Building the network</a><a class="anchor-link" href="#1.-Building-the-network">&#182;</a></h3><h3 id="2.-Analysis"><a href="#2.-Analysis-of-network">2. Analysis</a><a class="anchor-link" href="#2.-Analysis">&#182;</a></h3><hr>
 
 </div>
 </div>
@@ -13299,7 +13276,7 @@ However, to build the retweet network, we need such relations;</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.1">1.1<a class="anchor-link" href="#1.1">&#182;</a></h3><p>As we already did previously for <strong>(1.)</strong>, as it stands in DB, we simply join it with <code>public.documents</code> on <br><code>doc.natural_key</code> = <code>retweet.original_tweet_id</code></p>
+<h3 id="1.1-DB">1.1 DB<a class="anchor-link" href="#1.1-DB">&#182;</a></h3><p>As we already did previously for <strong>(1.)</strong>, as it stands in DB, we simply join it with <code>public.documents</code> on <br><code>doc.natural_key</code> = <code>retweet.original_tweet_id</code></p>
 <p>So, we can get the <code>doc.author_id</code></p>
 
 </div>
@@ -13307,7 +13284,7 @@ However, to build the retweet network, we need such relations;</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">time</span>
@@ -13344,8 +13321,8 @@ print db_retweets.shape[0], &quot;rows&quot;
 &gt;&gt;&gt; Query database data20181
 &gt;&gt;&gt; Query database data20182
 52803 rows
-CPU times: user 288 ms, sys: 48 ms, total: 336 ms
-Wall time: 3min 52s
+CPU times: user 300 ms, sys: 24 ms, total: 324 ms
+Wall time: 3min 32s
 </pre>
 </div>
 </div>
@@ -13356,7 +13333,7 @@ Wall time: 3min 52s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">db_retweets</span><span class="p">[[</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;publishing_date&#39;</span><span class="p">,</span> <span class="s1">&#39;retweet_author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;retweeted_date&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13372,7 +13349,7 @@ Wall time: 3min 52s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[16]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -13450,7 +13427,7 @@ Wall time: 3min 52s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">db_retweets</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;retweet_author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;retweeted_date&#39;</span><span class="p">,</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> 
@@ -13464,7 +13441,7 @@ Wall time: 3min 52s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">db_retweets</span><span class="p">[[</span><span class="s1">&#39;retweet_author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;author_id&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
@@ -13502,14 +13479,14 @@ union of the two: 25470
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.2">1.2<a class="anchor-link" href="#1.2">&#182;</a></h3><p>Here we will first load all <code>doc.natural_key</code> $\leftrightarrow$ <code>doc.author_id</code> and then make the join in a dataframe</p>
+<h3 id="1.2-API">1.2 API<a class="anchor-link" href="#1.2-API">&#182;</a></h3><p>Here we will first load all <code>doc.natural_key</code> $\leftrightarrow$ <code>doc.author_id</code> and then make the join in a dataframe</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/retweets_20171.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
@@ -13527,7 +13504,7 @@ union of the two: 25470
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">csv_retweets</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -13555,7 +13532,7 @@ union of the two: 25470
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13611,7 +13588,7 @@ union of the two: 25470
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">time</span>
@@ -13644,8 +13621,8 @@ print tweet_author.shape[0], &quot;rows&quot;
 &gt;&gt;&gt; Query database data20181
 &gt;&gt;&gt; Query database data20182
 133367 rows
-CPU times: user 444 ms, sys: 72 ms, total: 516 ms
-Wall time: 3min 43s
+CPU times: user 360 ms, sys: 44 ms, total: 404 ms
+Wall time: 2min 58s
 </pre>
 </div>
 </div>
@@ -13732,7 +13709,7 @@ Wall time: 3min 43s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">tweet_author_mapping</span> <span class="o">=</span> <span class="n">tweet_author</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;natural_key&#39;</span><span class="p">)[</span><span class="s1">&#39;author_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
@@ -13745,7 +13722,7 @@ Wall time: 3min 43s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">csv_retweets</span><span class="p">[</span><span class="s1">&#39;author_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">csv_retweets</span><span class="p">[</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tweet_author_mapping</span><span class="p">)</span>
@@ -13758,7 +13735,7 @@ Wall time: 3min 43s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">csv_retweets</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -13774,7 +13751,7 @@ Wall time: 3min 43s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[30]:</div>
+    <div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -13841,7 +13818,7 @@ Wall time: 3min 43s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">csv_retweets</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span> <span class="s1">&#39;retweet_author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;author_id&#39;</span><span class="p">]</span>
@@ -13854,7 +13831,7 @@ Wall time: 3min 43s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">all_retweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">csv_retweets</span><span class="p">[[</span><span class="s1">&#39;retweet_author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;tweet_id&#39;</span><span class="p">]],</span> 
@@ -13876,7 +13853,7 @@ Wall time: 3min 43s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">all_retweets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13892,7 +13869,7 @@ Wall time: 3min 43s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[51]:</div>
+    <div class="prompt output_prompt">Out[20]:</div>
 
 
 
@@ -13972,7 +13949,7 @@ Wall time: 3min 43s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">retweet_network</span> <span class="o">=</span> <span class="n">all_retweets</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;retweet_author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;author_id&#39;</span><span class="p">])[</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
@@ -13990,7 +13967,7 @@ Wall time: 3min 43s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[52]:</div>
+    <div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -14082,7 +14059,7 @@ Wall time: 3min 43s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Number of edges in network:&quot;</span><span class="p">,</span> <span class="n">retweet_network</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -14120,7 +14097,7 @@ Overall number of retweets (should be equal to size of df..) :  317158 retweets
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Number of edges of weight one:&quot;</span><span class="p">,</span> <span class="n">retweet_network</span><span class="p">[</span><span class="n">retweet_network</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -14159,23 +14136,11 @@ Overall number of retweets (should be equal to size of df..) :  317158 retweets
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">retweet_network_filtered</span> <span class="o">=</span> <span class="n">retweet_network</span><span class="p">[</span><span class="n">retweet_network</span><span class="o">.</span><span class="n">weight</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Number of nodes (users) in network:&quot;</span><span class="p">,</span> <span class="n">retweet_network_filtered</span><span class="p">[[</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">retweet_network_filtered</span> <span class="o">=</span> <span class="n">retweet_network</span><span class="p">[</span><span class="n">retweet_network</span><span class="o">.</span><span class="n">weight</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span> <span class="s2">&quot;Number of nodes (users) in network:&quot;</span><span class="p">,</span> <span class="n">retweet_network_filtered</span><span class="p">[[</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14192,7 +14157,7 @@ Overall number of retweets (should be equal to size of df..) :  317158 retweets
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Number of nodes (users) in network: 24669
+<pre>Number of nodes (users) in network: 7763
 </pre>
 </div>
 </div>
@@ -14203,11 +14168,719 @@ Overall number of retweets (should be equal to size of df..) :  317158 retweets
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Save this in csv to explore in Gephi:</span>
-<span class="n">retweet_network_filtered</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;overall_retweet_network_filtered.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;Saving {} rows&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">retweet_network_filtered</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">retweet_network_filtered</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;overall_retweet_network_filtered_2.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Saving 14244 rows
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Save this in csv to explore in Gephi:</span>
+<span class="k">print</span> <span class="s2">&quot;Saving {} rows&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">retweet_network_filtered</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">retweet_network_filtered</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;overall_retweet_network_filtered_1.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Saving 43778 rows
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Save this in csv to explore in Gephi:</span>
+<span class="n">retweet_network</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;overall_retweet_network.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="2.-Analysis-of-network">2. Analysis of network<a class="anchor-link" href="#2.-Analysis-of-network">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">network</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;overall_retweet_network_filtered_1.csv&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's first build a directed graph from the weighted edge list we computed :</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">network</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[71]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>source</th>
+      <th>target</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>100015201</td>
+      <td>3310944995</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1000164518381711363</td>
+      <td>80811754</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>100058399</td>
+      <td>1610028210</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is the graph, after running a Yifan Hu's spacialisation</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="overall_retweet_net_1.png" alt="drawing" width="700"/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">convert_matrix</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+<span class="c1">#pos = nx.spectral_layout(G)</span>
+<span class="c1">#pos = nx.spring_layout(G)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">forceatlas2_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="c1">#pos = nx.random_layout(G)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">G_undirect</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_undirected</span><span class="p">()</span>
+
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G_undirect</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
+<span class="n">biggest</span> <span class="o">=</span> <span class="n">sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G_undirect</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[93]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">nx</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="s2">&quot;Density: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="s2">&quot;Average clustering:&quot;</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="s2">&quot;# of Connected components:&quot;</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">number_connected_components</span><span class="p">(</span><span class="n">G_undirect</span><span class="p">)</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="s2">&quot;Size of biggest component: {:.2f}</span><span class="si">% o</span><span class="s2">f Graph.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">biggest</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Name: 
+Type: DiGraph
+Number of nodes: 24669
+Number of edges: 43778
+Average in degree:   1.7746
+Average out degree:   1.7746
+
+Density: 7.19399997856e-05
+
+Average clustering: 0.0505645525251
+
+# of Connected components: 730
+
+Size of biggest component: 92.82% of Graph.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[92]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span>
+                             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Size Distribution of </span><span class="se">\</span>
+<span class="s1">the remaining components ({:.1f}</span><span class="si">% o</span><span class="s1">f graph)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">100</span><span class="o">-</span><span class="n">biggest</span><span class="p">),</span>
+                             <span class="n">xTitle</span><span class="o">=</span><span class="s1">&#39;size of comp&#39;</span><span class="p">,</span>
+                            <span class="n">yTitle</span><span class="o">=</span><span class="s1">&#39;# Comp&#39;</span>
+                             <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+        
+        
+            <div id="e521cf32-e2f9-4ab1-9f44-141ef0e3658d" class="plotly-graph-div"></div>
+            <script type="text/javascript">
+                require(["plotly"], function(Plotly) {
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    window.PLOTLYENV.BASE_URL='https://plot.ly';
+                    
+                if (document.getElementById("e521cf32-e2f9-4ab1-9f44-141ef0e3658d")) {
+                    Plotly.newPlot(
+                        'e521cf32-e2f9-4ab1-9f44-141ef0e3658d',
+                        [{"histfunc": "count", "histnorm": "", "marker": {"color": "rgba(255, 153, 51, 1.0)", "line": {"color": "#4D5663", "width": 1.3}}, "name": "0", "opacity": 0.8, "orientation": "v", "type": "histogram", "uid": "59b98f18-843a-426d-bf73-4f6aed9e89b3", "x": [26, 24, 19, 17, 14, 11, 11, 9, 9, 9, 9, 8, 8, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}],
+                        {"barmode": "overlay", "legend": {"bgcolor": "#F5F6F9", "font": {"color": "#4D5663"}}, "paper_bgcolor": "#F5F6F9", "plot_bgcolor": "#F5F6F9", "title": {"font": {"color": "#4D5663"}, "text": "Size Distribution of the remaining components (7.2% of graph)"}, "xaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": "size of comp"}, "zerolinecolor": "#E1E5ED"}, "yaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": "# Comp"}, "zerolinecolor": "#E1E5ED"}},
+                        {"responsive": true, "plotlyServerURL": "https://plot.ly", "linkText": "Export to plot.ly", "showLink": true}
+                    )
+                };
+                });
+            </script>
+        </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Big-component-Analysis">Big component Analysis<a class="anchor-link" href="#Big-component-Analysis">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">nx</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">Gc</span><span class="p">)</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="s2">&quot;Density: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">Gc</span><span class="p">))</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="s2">&quot;Average clustering:&quot;</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">average_clustering</span><span class="p">(</span><span class="n">Gc</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Name: 
+Type: Graph
+Number of nodes: 22897
+Number of edges: 42151
+Average degree:   3.6818
+
+Density: 0.000160805047805
+
+Average clustering: 0.0838796047065
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="In-degree-&amp;-Betweenness-Centrality">In-degree &amp; Betweenness Centrality<a class="anchor-link" href="#In-degree-&amp;-Betweenness-Centrality">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[117]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">Gc_dir</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">Gc</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[119]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">&quot;... Building the directed Gc Graph ... &quot;</span>
+<span class="k">print</span> <span class="n">nx</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">Gc_dir</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>... Building the directed Gc Graph ... 
+Name: 
+Type: DiGraph
+Number of nodes: 22897
+Number of edges: 42628
+Average in degree:   1.8617
+Average out degree:   1.8617
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[126]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">bc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">Gc_dir</span><span class="p">)</span>
+<span class="n">in_deg</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">in_degree_centrality</span><span class="p">(</span><span class="n">Gc_dir</span><span class="p">)</span>
+<span class="c1">#out_deg = nx.out_degree_centrality(Gc_dir)</span>
+
+<span class="n">betweenness</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">bc</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="s1">&#39;Cent&#39;</span><span class="p">])</span>
+<span class="n">in_degree</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">in_deg</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="s1">&#39;Cent&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[128]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Nodes sorted by betweenness centrality:&quot;</span>
+<span class="k">print</span> <span class="n">betweenness</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Cent&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+        <script type="text/javascript">
+        window.PlotlyConfig = {MathJaxConfig: 'local'};
+        if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+        if (typeof require !== 'undefined') {
+        require.undef("plotly");
+        requirejs.config({
+            paths: {
+                'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+            }
+        });
+        require(['plotly'], function(Plotly) {
+            window._Plotly = Plotly;
+        });
+        }
+        </script>
+        
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Nodes sorted by betweenness:
+             Node      Cent
+13719    66401056  0.010313
+4951   1891266440  0.005017
+2402    189806241  0.004725
+10021   173334737  0.004103
+7733   2680729040  0.004079
+2239    636629677  0.002970
+20252   124896632  0.002671
+10329    19982260  0.002569
+989      61216500  0.002469
+6069   1541965728  0.002467
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[130]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Nodes sorted by in-degree centrality:&quot;</span>
+<span class="k">print</span> <span class="n">in_degree</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Cent&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Nodes sorted by in-degree centrality:
+             Node      Cent
+13719    66401056  0.090540
+7733   2680729040  0.057390
+4225     64643056  0.057041
+21023    46519992  0.051188
+10329    19982260  0.043195
+989      61216500  0.043195
+1707     19539716  0.041536
+2239    636629677  0.039570
+20918    16897082  0.034984
+12683    12524522  0.034853
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">adc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">average_degree_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">nd</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">average_neighbor_degree</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">anc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">average_node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">aspl</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">average_shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
 </pre></div>
 
     </div>

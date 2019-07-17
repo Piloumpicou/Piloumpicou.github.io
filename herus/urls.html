@@ -13115,7 +13115,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[295]:</div>
+<div class="prompt input_prompt">In&nbsp;[298]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -13140,7 +13140,34 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[295]:</div>
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+        <script type="text/javascript">
+        window.PlotlyConfig = {MathJaxConfig: 'local'};
+        if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+        if (typeof require !== 'undefined') {
+        require.undef("plotly");
+        requirejs.config({
+            paths: {
+                'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+            }
+        });
+        require(['plotly'], function(Plotly) {
+            window._Plotly = Plotly;
+        });
+        }
+        </script>
+        
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[298]:</div>
 
 
 
@@ -13253,6 +13280,7 @@ $( document ).ready(code_toggle);
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Urls-&amp;-Domains-(Sources)-Analysis">Urls &amp; Domains (Sources) Analysis<a class="anchor-link" href="#Urls-&amp;-Domains-(Sources)-Analysis">&#182;</a></h1><hr>
 <h3 id="1.-Domains-from-DB,-weighted-by:">1. Domains from DB, weighted by:<a class="anchor-link" href="#1.-Domains-from-DB,-weighted-by:">&#182;</a></h3><h3 id="A.-The-#-of-tweets"><a href="#A.-Domains-by-#-of-tweets">A. The # of tweets</a><a class="anchor-link" href="#A.-The-#-of-tweets">&#182;</a></h3><h3 id="B.-The-#-of-users"><a href="#2.-Domains-by-#-of-users">B. The # of users</a><a class="anchor-link" href="#B.-The-#-of-users">&#182;</a></h3><h3 id="C.-The-#-of-retweets"><a href="#C.-URL-retweet-counter">C. The # of retweets</a><a class="anchor-link" href="#C.-The-#-of-retweets">&#182;</a></h3><hr>
+<h3 id="2.-Domains-by-community"><a href="#URLs-by-community">2. Domains by community</a><a class="anchor-link" href="#2.-Domains-by-community">&#182;</a></h3><hr>
 <h3 id="URLs-from-Body">URLs from Body<a class="anchor-link" href="#URLs-from-Body">&#182;</a></h3><p>-- work in progress --</p>
 <hr>
 
@@ -13346,7 +13374,7 @@ Wall time: 40.9 s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[475]:</div>
+<div class="prompt input_prompt">In&nbsp;[321]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">urlparse</span> <span class="kn">import</span> <span class="n">urlparse</span>
@@ -13387,7 +13415,7 @@ Wall time: 40.9 s
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[475]:</div>
+    <div class="prompt output_prompt">Out[321]:</div>
 
 
 
@@ -13409,10 +13437,14 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[322]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">all_doc_urls</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of references by domain name&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">all_doc_urls</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> 
+                                           <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of references by domain name&#39;</span><span class="p">,</span>
+                                           <span class="n">margin</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">180</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span><span class="mi">160</span><span class="p">},</span>
+                                           <span class="n">dimensions</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+                                          <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13433,18 +13465,18 @@ dtype: int64</pre>
 <div>
         
         
-            <div id="77890043-2df4-4f82-ac6c-f490f973caa7" class="plotly-graph-div"></div>
+            <div id="432e1b28-4d19-44c9-a58b-e561b3a96b71" class="plotly-graph-div"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     window.PLOTLYENV.BASE_URL='https://plot.ly';
                     
-                if (document.getElementById("77890043-2df4-4f82-ac6c-f490f973caa7")) {
+                if (document.getElementById("432e1b28-4d19-44c9-a58b-e561b3a96b71")) {
                     Plotly.newPlot(
-                        '77890043-2df4-4f82-ac6c-f490f973caa7',
-                        [{"marker": {"color": "rgba(255, 153, 51, 0.6)", "line": {"color": "rgba(255, 153, 51, 1.0)", "width": 1}}, "name": "None", "orientation": "v", "text": "", "type": "bar", "uid": "3a4e551e-9053-48e6-aee1-58a46c934bad", "x": ["foodbabe.com", "tacticalinvestor.com", "www.topmastersinhealthcare.com", "www.naturalnews.com", "flipboard.com", "www.fooddemocracynow.org", "gmwatch.org", "www.huffingtonpost.com", "salsa3.salsalabs.com", "www.seattleorganicrestaurants.com", "archive.is", "www.globalresearch.ca", "www.ecowatch.com", "seattleorganicrestaurants.com", "bit.ly", "www.rt.com", "tweetedtimes.com", "articles.mercola.com", "coconutheadsurvivalguide.com", "www.nytimes.com"], "y": [1752, 1736, 1241, 780, 685, 574, 514, 459, 429, 372, 370, 325, 318, 269, 267, 256, 230, 224, 217, 204]}],
-                        {"legend": {"bgcolor": "#F5F6F9", "font": {"color": "#4D5663"}}, "paper_bgcolor": "#F5F6F9", "plot_bgcolor": "#F5F6F9", "title": {"font": {"color": "#4D5663"}, "text": "Number of references by domain name"}, "xaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}, "yaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}},
-                        {"responsive": true, "plotlyServerURL": "https://plot.ly", "linkText": "Export to plot.ly", "showLink": true}
+                        '432e1b28-4d19-44c9-a58b-e561b3a96b71',
+                        [{"marker": {"color": "rgba(255, 153, 51, 0.6)", "line": {"color": "rgba(255, 153, 51, 1.0)", "width": 1}}, "name": "None", "orientation": "v", "text": "", "type": "bar", "uid": "8669bc73-aed8-42db-903d-b96f35b01855", "x": ["foodbabe.com", "tacticalinvestor.com", "www.topmastersinhealthcare.com", "www.naturalnews.com", "flipboard.com", "www.fooddemocracynow.org", "gmwatch.org", "www.huffingtonpost.com", "salsa3.salsalabs.com", "www.seattleorganicrestaurants.com", "archive.is", "www.globalresearch.ca", "www.ecowatch.com", "seattleorganicrestaurants.com", "bit.ly", "www.rt.com", "tweetedtimes.com", "articles.mercola.com", "coconutheadsurvivalguide.com", "www.nytimes.com"], "y": [1752, 1736, 1241, 780, 685, 574, 514, 459, 429, 372, 370, 325, 318, 269, 267, 256, 230, 224, 217, 204]}],
+                        {"height": 600, "legend": {"bgcolor": "#F5F6F9", "font": {"color": "#4D5663"}}, "margin": {"b": 180, "r": 160}, "paper_bgcolor": "#F5F6F9", "plot_bgcolor": "#F5F6F9", "title": {"font": {"color": "#4D5663"}, "text": "Number of references by domain name"}, "width": 1000, "xaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}, "yaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}},
+                        {"plotlyServerURL": "https://plot.ly", "linkText": "Export to plot.ly", "showLink": true}
                     )
                 };
                 });
@@ -13490,7 +13522,7 @@ That means we want to only count the domain once when a user mentions it several
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[146]:</div>
+<div class="prompt input_prompt">In&nbsp;[323]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Now we simply keep the author_id in the index so that we can drop duplicated (author-url) pairs.</span>
@@ -13537,7 +13569,7 @@ That means we want to only count the domain once when a user mentions it several
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[146]:</div>
+    <div class="prompt output_prompt">Out[323]:</div>
 
 
 
@@ -13580,11 +13612,14 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[501]:</div>
+<div class="prompt input_prompt">In&nbsp;[343]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">all_doc_urls_once</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> 
-                                                <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of references by domain name - Normalized&#39;</span><span class="p">)</span>
+                                                <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of references by domain name - Normalized&#39;</span><span class="p">,</span>
+                                                <span class="n">margin</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span><span class="mi">100</span><span class="p">},</span>
+                                                <span class="n">dimensions</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">550</span><span class="p">)</span>
+                                               <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13605,18 +13640,18 @@ dtype: int64</pre>
 <div>
         
         
-            <div id="463c454e-ab03-4ff9-b347-7ebc88dabd6f" class="plotly-graph-div"></div>
+            <div id="88580227-e158-4480-b325-270ebb983791" class="plotly-graph-div"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     window.PLOTLYENV.BASE_URL='https://plot.ly';
                     
-                if (document.getElementById("463c454e-ab03-4ff9-b347-7ebc88dabd6f")) {
+                if (document.getElementById("88580227-e158-4480-b325-270ebb983791")) {
                     Plotly.newPlot(
-                        '463c454e-ab03-4ff9-b347-7ebc88dabd6f',
-                        [{"marker": {"color": "rgba(255, 153, 51, 0.6)", "line": {"color": "rgba(255, 153, 51, 1.0)", "width": 1}}, "name": "None", "orientation": "v", "text": "", "type": "bar", "uid": "d174b705-6822-4d1e-abd0-e0a3d15002ae", "x": ["salsa3.salsalabs.com", "gmwatch.org", "fooddemocracynow.org", "naturalnews.com", "dld.bz", "ecowatch.com", "huffingtonpost.com", "articles.mercola.com", "organicconsumers.org", "globalresearch.ca", "seattleorganicrestaurants.com", "bit.ly", "linkis.com", "sustainablepulse.com", "march-against-monsanto.com", "gmoinside.org", "reuters.com", "buycott.com", "naturalblaze.com", "alternet.org"], "y": [295, 213, 188, 129, 88, 70, 56, 53, 53, 53, 46, 40, 39, 38, 32, 29, 29, 29, 27, 25]}],
-                        {"legend": {"bgcolor": "#F5F6F9", "font": {"color": "#4D5663"}}, "paper_bgcolor": "#F5F6F9", "plot_bgcolor": "#F5F6F9", "title": {"font": {"color": "#4D5663"}, "text": "Number of references by domain name - Normalized"}, "xaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}, "yaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}},
-                        {"responsive": true, "plotlyServerURL": "https://plot.ly", "linkText": "Export to plot.ly", "showLink": true}
+                        '88580227-e158-4480-b325-270ebb983791',
+                        [{"marker": {"color": "rgba(255, 153, 51, 0.6)", "line": {"color": "rgba(255, 153, 51, 1.0)", "width": 1}}, "name": "None", "orientation": "v", "text": "", "type": "bar", "uid": "6671cfbf-24c6-4c98-8317-7aa0569ef600", "x": ["salsa3.salsalabs.com", "gmwatch.org", "fooddemocracynow.org", "naturalnews.com", "dld.bz", "ecowatch.com", "huffingtonpost.com", "articles.mercola.com", "globalresearch.ca", "organicconsumers.org", "seattleorganicrestaurants.com", "bit.ly", "linkis.com", "sustainablepulse.com", "march-against-monsanto.com", "gmoinside.org", "reuters.com", "buycott.com", "naturalblaze.com", "alternet.org"], "y": [295, 213, 188, 129, 88, 70, 56, 53, 53, 53, 46, 40, 39, 38, 32, 29, 29, 29, 27, 25]}],
+                        {"height": 550, "legend": {"bgcolor": "#F5F6F9", "font": {"color": "#4D5663"}}, "margin": {"b": 120, "r": 100}, "paper_bgcolor": "#F5F6F9", "plot_bgcolor": "#F5F6F9", "title": {"font": {"color": "#4D5663"}, "text": "Number of references by domain name - Normalized"}, "width": 1000, "xaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}, "yaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}},
+                        {"plotlyServerURL": "https://plot.ly", "linkText": "Export to plot.ly", "showLink": true}
                     )
                 };
                 });
@@ -13907,6 +13942,60 @@ Name: retweet_count, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[355]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">domain_weighted</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[:</span><span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+                                                        <span class="n">margin</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">140</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span><span class="mi">140</span><span class="p">},</span>
+                                                       <span class="n">dimensions</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">550</span><span class="p">)</span>
+                                                       <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+        
+        
+            <div id="17594c1e-62e3-42d0-a750-b8889c05d000" class="plotly-graph-div"></div>
+            <script type="text/javascript">
+                require(["plotly"], function(Plotly) {
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    window.PLOTLYENV.BASE_URL='https://plot.ly';
+                    
+                if (document.getElementById("17594c1e-62e3-42d0-a750-b8889c05d000")) {
+                    Plotly.newPlot(
+                        '17594c1e-62e3-42d0-a750-b8889c05d000',
+                        [{"marker": {"color": "rgba(255, 153, 51, 0.6)", "line": {"color": "rgba(255, 153, 51, 1.0)", "width": 1}}, "name": "retweet_count", "orientation": "v", "text": "", "type": "bar", "uid": "20d99efd-cd2d-4fa4-8122-798336ff0d66", "x": ["ecowatch.com", "rt.com", "naturalnews.com", "articles.mercola.com", "huffingtonpost.com", "tacticalinvestor.com", "reuters.com", "sustainablepulse.com", "zerohedge.com", "nytimes.com", "wakingtimes.com", "yournewswire.com", "foxbusiness.com", "motherjones.com", "biologicaldiversity.org", "newstarget.com", "usrtk.org", "theatlantic.com", "seattleorganicrestaurants.com", "gmwatch.org"], "y": [1907, 1674, 1530, 1440, 1166, 944, 901, 735, 719, 621, 481, 360, 336, 327, 319, 309, 295, 288, 280, 272]}],
+                        {"height": 550, "legend": {"bgcolor": "#F5F6F9", "font": {"color": "#4D5663"}}, "margin": {"b": 140, "r": 140}, "paper_bgcolor": "#F5F6F9", "plot_bgcolor": "#F5F6F9", "title": {"font": {"color": "#4D5663"}}, "width": 1000, "xaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}, "yaxis": {"gridcolor": "#E1E5ED", "showgrid": true, "tickfont": {"color": "#4D5663"}, "title": {"font": {"color": "#4D5663"}, "text": ""}, "zerolinecolor": "#E1E5ED"}},
+                        {"plotlyServerURL": "https://plot.ly", "linkText": "Export to plot.ly", "showLink": true}
+                    )
+                };
+                });
+            </script>
+        </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[144]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -14169,15 +14258,591 @@ Overlap for top-500: 60.0%
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id="URLs-by-community">URLs by community<a class="anchor-link" href="#URLs-by-community">&#182;</a></h3>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[471]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;rt_net_communities_gephi_exp.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Label&#39;</span><span class="p">,</span> <span class="s1">&#39;timeset&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;{} rows in rt_net&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1">#df.head(3)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(24669, 14) rows in rt_net
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[472]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># First copy all interesting columns, dropping nans</span>
+<span class="n">author_urls</span> <span class="o">=</span> <span class="n">sample_monsanto</span><span class="p">[[</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span> 
+                                 <span class="s1">&#39;natural_key&#39;</span><span class="p">,</span> 
+                                 <span class="s1">&#39;document_urls&#39;</span><span class="p">,</span> 
+                                 <span class="s1">&#39;retweet_count&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># document_urls is a list of urls. So expand it to columns.</span>
+<span class="n">urls</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">author_urls</span><span class="p">[</span><span class="s1">&#39;document_urls&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+<span class="c1"># Reconcat expanded urls to previous list</span>
+<span class="n">expanded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">author_urls</span><span class="p">[[</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;natural_key&#39;</span><span class="p">,</span> <span class="s1">&#39;retweet_count&#39;</span><span class="p">]],</span> <span class="n">urls</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Melt the columns of urls in only one column, drop unnecessary stuff</span>
+<span class="n">expanded</span> <span class="o">=</span> <span class="n">expanded</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;natural_key&#39;</span><span class="p">,</span> <span class="s1">&#39;retweet_count&#39;</span><span class="p">],</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>\
+                    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>\
+                    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Extract domain name from url</span>
+<span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_domain</span><span class="p">)</span>
+
+<span class="c1"># We still need remove www. to remove some duplicates</span>
+<span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;www.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s2">&quot;number of tweets with urls:&quot;</span><span class="p">,</span> <span class="n">expanded</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">expanded</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>number of tweets with urls: 19033
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[472]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>author_id</th>
+      <th>natural_key</th>
+      <th>retweet_count</th>
+      <th>url</th>
+      <th>domain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>280705761</td>
+      <td>821470612719890432</td>
+      <td>0</td>
+      <td>http://www.naturalnews.com/2017-01-17-bees-are-officially-on-the-endangered-list-almost-wiped-out-from-monsanto.html</td>
+      <td>naturalnews.com</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>792417714480349184</td>
+      <td>878709862837895168</td>
+      <td>3</td>
+      <td>http://livetheorganicdream.com/youre-still-going-starbucks-get-ready-never-want/</td>
+      <td>livetheorganicdream.com</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>54169689</td>
+      <td>831546230304026624</td>
+      <td>0</td>
+      <td>http://articles.mercola.com/sites/articles/archive/2017/02/14/monsantos-roundup-cancer-warning-label.aspx?et_cid=DM133763&amp;et_rid=1886118167</td>
+      <td>articles.mercola.com</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>20011256</td>
+      <td>826496682783289349</td>
+      <td>0</td>
+      <td>https://qz.com/899245/politics-is-foiling-monsantos-mon-quest-to-grow-gmo-corn-in-mexico/</td>
+      <td>qz.com</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>19364759</td>
+      <td>879367223852322816</td>
+      <td>0</td>
+      <td>https://www.ecowatch.com/food-politics-nestle-gmos-2448504727.html</td>
+      <td>ecowatch.com</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[473]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span>
+<span class="n">expanded</span> <span class="o">=</span> <span class="n">expanded</span><span class="p">[</span><span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;author_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">idx</span><span class="p">)]</span>
+
+<span class="n">id_comm_map</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Id&#39;</span><span class="p">)[</span><span class="s1">&#39;modularity_class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;community&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;author_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">id_comm_map</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s2">&quot;How much do we find in rt network:&quot;</span><span class="p">,</span> <span class="n">expanded</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>How much do we find in rt network: 13588
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For later reference, let's have a look at most influent users:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[474]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;modularity_class&#39;</span><span class="p">)[</span><span class="s1">&#39;indegree&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;indegree&#39;</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;indegree&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[[</span><span class="s1">&#39;indegree&#39;</span><span class="p">,</span> <span class="s1">&#39;modularity_class&#39;</span><span class="p">,</span> <span class="s1">&#39;screen_name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;in-degree&#39;</span><span class="p">,</span> <span class="s1">&#39;community_id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="n">p</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[474]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>in-degree</th>
+      <th>community_id</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>2073</td>
+      <td>1</td>
+      <td>GMWatch</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1314</td>
+      <td>3</td>
+      <td>FarmFairyCrafts</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>1306</td>
+      <td>9</td>
+      <td>RT_com</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>1172</td>
+      <td>7</td>
+      <td>NonGMOProject</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>989</td>
+      <td>11</td>
+      <td>careygillam</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>989</td>
+      <td>11</td>
+      <td>OrganicConsumer</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>951</td>
+      <td>424</td>
+      <td>foe_us</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>798</td>
+      <td>5</td>
+      <td>mercola</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>757</td>
+      <td>24</td>
+      <td>va_shiva</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>697</td>
+      <td>12</td>
+      <td>8extremes</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Which community tweeted the most urls:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[475]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;community&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[475]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>167    3561
+3      2763
+25     2222
+1       829
+12      694
+15      559
+11      468
+5       450
+6       312
+7       294
+Name: community, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What are overall most tweeted domains:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[476]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[476]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tacticalinvestor.com             1636
+topmastersinhealthcare.com       1006
+flipboard.com                     681
+gmwatch.org                       622
+seattleorganicrestaurants.com     614
+fooddemocracynow.org              563
+naturalnews.com                   501
+foodbabe.com                      407
+huffingtonpost.com                405
+archive.is                        370
+Name: domain, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check which domain for each community:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[477]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 167 = PositivelyJoan</span>
+<span class="n">comm</span> <span class="o">=</span> <span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;community&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">167</span>
+<span class="n">expanded</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">comm</span><span class="p">,</span> <span class="s1">&#39;domain&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[477]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tacticalinvestor.com             1608
+seattleorganicrestaurants.com     402
+bit.ly                            215
+tweetedtimes.com                  148
+topmastersinhealthcare.com        116
+naturalnews.com                    94
+act.credoaction.com                82
+williamengdahl.com                 52
+ecowatch.com                       43
+articles.mercola.com               41
+Name: domain, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[478]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 3 = FarmFairyCrafts</span>
+<span class="n">comm</span> <span class="o">=</span> <span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;community&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">3</span>
+<span class="n">expanded</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">comm</span><span class="p">,</span> <span class="s1">&#39;domain&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[478]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>archive.is                      370
+topmastersinhealthcare.com      370
+huffingtonpost.com              251
+coconutheadsurvivalguide.com    217
+prn.fm                          202
+gmonion.com                     168
+nytimes.com                     100
+reuters.com                      87
+foodbabe.com                     74
+myaccount.nytimes.com            73
+Name: domain, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[479]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 5 = Mercola</span>
+<span class="n">comm</span> <span class="o">=</span> <span class="n">expanded</span><span class="p">[</span><span class="s1">&#39;community&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">5</span>
+<span class="n">expanded</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">comm</span><span class="p">,</span> <span class="s1">&#39;domain&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[479]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>topmastersinhealthcare.com    121
+naturalnews.com               102
+articles.mercola.com           46
+newstarget.com                 14
+foodbabe.com                   12
+activistpost.com               11
+worldtruth.tv                   9
+wakingtimes.com                 8
+althealthworks.com              7
+talknetwork.com                 6
+Name: domain, dtype: int64</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -14210,6 +14875,288 @@ Overlap for top-500: 60.0%
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[309]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">hp</span><span class="o">.</span><span class="n">print_tweets</span><span class="p">(</span><span class="n">df_monsanto</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+        <script type="text/javascript">
+        window.PlotlyConfig = {MathJaxConfig: 'local'};
+        if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+        if (typeof require !== 'undefined') {
+        require.undef("plotly");
+        requirejs.config({
+            paths: {
+                'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+            }
+        });
+        require(['plotly'], function(Plotly) {
+            window._Plotly = Plotly;
+        });
+        }
+        </script>
+        
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>== 2017-06-23 == 911868b0-577a-11e7-b557-0242ac110004 ==
+URLs - None -
+@nxverthinenough Buy organic and you should be okay. Most local farmers markets still use their own seeds and not Monsantos but ugh I feel you 😓😭
+
+== 2017-01-18 == d570fb60-dcfc-11e6-a81f-0242ac110006 ==
+URLs - [&#39;http://www.naturalnews.com/2017-01-17-bees-are-officially-on-the-endangered-list-almost-wiped-out-from-monsanto.html&#39;] -
+#gmo #monsanto Another species of bee added to the endangered list, almost wiped out by Monsanto https://t.co/goxc5LnAkm
+
+== 2017-06-25 == b9785b90-591d-11e7-8d32-0242ac110004 ==
+URLs - [&#39;http://livetheorganicdream.com/youre-still-going-starbucks-get-ready-never-want/&#39;] -
+#Starbucks are known to have spent several millions of dollars covering up the use of #GMO’s...
+ #Monsanto https://t.co/3LcYGM2VNZ
+
+== 2017-02-15 == 32819fde-f2e3-11e6-ae1c-0242ac110006 ==
+URLs - [&#39;http://articles.mercola.com/sites/articles/archive/2017/02/14/monsantos-roundup-cancer-warning-label.aspx?et_cid=DM133763&amp;et_rid=1886118167&#39;] -
+Warning - Monsanto&#39;s Roundup Must Carry Cancer Warning Label, Judge Decrees https://t.co/lYSrjEa7Wr via @mercola #health #food #vegan
+
+== 2017-01-08 == 23d80c0e-d504-11e6-b3f5-0242ac110007 ==
+URLs - None -
+Do you trust Monsanto to responsibly manage their #GMO grass? Speak out w/ @SierraRise:  https://t.co/XBBF49cAc4
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[316]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">df_monsanto</span><span class="p">[</span><span class="s1">&#39;document_urls&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[316]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[None,
+ [&#39;http://www.naturalnews.com/2017-01-17-bees-are-officially-on-the-endangered-list-almost-wiped-out-from-monsanto.html&#39;],
+ [&#39;http://livetheorganicdream.com/youre-still-going-starbucks-get-ready-never-want/&#39;],
+ [&#39;http://articles.mercola.com/sites/articles/archive/2017/02/14/monsantos-roundup-cancer-warning-label.aspx?et_cid=DM133763&amp;et_rid=1886118167&#39;],
+ None]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[311]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[308]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">rurl</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;http\S+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="n">find_url</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;http\S+&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="n">df_monsanto</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">find_url</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[308]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0                           []
+1    [https://t.co/goxc5LnAkm]
+2    [https://t.co/3LcYGM2VNZ]
+3    [https://t.co/lYSrjEa7Wr]
+4    [https://t.co/XBBF49cAc4]
+Name: body, dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[317]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">real_url_from_list</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">url</span>
+<span class="n">find_url</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="nb">map</span><span class="p">(</span><span class="n">real_url_from_list</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;http\S+&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+
+
+<span class="n">df_monsanto</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">find_url</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[317]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[[],
+ [u&#39;https://www.naturalnews.com/2017-01-17-bees-are-officially-on-the-endangered-list-almost-wiped-out-from-monsanto.html&#39;],
+ [u&#39;https://www.livetheorganicdream.com&#39;],
+ [u&#39;https://articles.mercola.com/sites/articles/archive/2017/02/14/monsantos-roundup-cancer-warning-label.aspx?utm_source=dnl&amp;utm_medium=email&amp;utm_content=art1&amp;utm_campaign=20170214Z1&amp;et_cid=DM133763&amp;et_rid=1886118167&#39;],
+ [u&#39;https://addup.sierraclub.org/campaigns/oppose-the-first-ever-genetically-engineered-grass?promoid=70131000001Dm8ZAAS&amp;utm_medium=recruit&amp;utm_source=twitter&amp;utm_campaign=addup&amp;tc=cErkq&amp;utm_medium=recruit&amp;utm_source=twitter&amp;utm_campaign=addup&amp;tc=cErkq&#39;]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">rurl</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;http\S+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="n">find_url</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;http\S+&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="c1">#find_url = lambda e: map(real_url_from_list, re.findall(r&quot;http\S+&quot;, e))</span>
+<span class="n">real_url_from_list</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">url</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&amp;amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;&#39;</span><span class="p">)</span> 
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> 
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> 
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&amp;gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">)</span> 
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\xc2\xa0</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\xe2\x80\x94</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_monsanto</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\xe2\x80\xa6</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_corpus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">rurl</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;url_body&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">find_url</span><span class="p">)</span>
+
+<span class="c1"># Remove hastags (but keep words) Todo : remove hashtags at end of tweet, keep the ones in the middle</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;body_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
